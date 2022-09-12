@@ -1,0 +1,29 @@
+div.navBar{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  background: white;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+}
+
+ul li a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: black;
+  font-family: cursive;
+}
+
+ul li a:hover {
+  color: red;
+}
