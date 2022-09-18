@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes }  from "@angular/router"
+import { RouterModule, Routes }  from "@angular/router" ;
 import { GroupComponent } from "./group/group.component";
 import { InfoPageComponent } from "./info-page/info-page.component";
 import { LandingComponent } from "./landing/landing.component";
@@ -9,6 +9,7 @@ const appRoutes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'About', component: InfoPageComponent },
   { path: 'Organizations', component: OrganizationsComponent },
+  { path: 'Group', component: GroupComponent}
 ]
 
 @NgModule({

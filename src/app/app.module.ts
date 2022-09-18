@@ -7,12 +7,12 @@ import { LandingComponent } from './landing/landing.component';
 import { OrganizationsComponent } from './organizations/organizations.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { GroupComponent } from './group/group.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
+import { HeaderMasterComponent } from './shared/header-master/header-master.component';
+import { FooterMasterComponent } from './shared/footer-master/footer-master.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
@@ -28,9 +28,9 @@ const appRoutes: Routes = [
     OrganizationsComponent,
     InfoPageComponent,
     GroupComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavBarComponent
+    NavBarComponent,
+    FooterMasterComponent,
+    HeaderMasterComponent,
   ],
   imports: [
     BrowserModule,
