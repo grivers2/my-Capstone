@@ -1,5 +1,6 @@
 # MyCapstone
 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
 ## Development server
@@ -25,3 +26,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## WireMocks
+
+<https://miro.com/app/board/uXjVPUsAWI4=/?share_link_id=491892460482>
+Link to Wiremock.
+
+## TaskBoard
+
+<https://miro.com/app/board/uXjVPU8wmBA=/?share_link_id=61330704772>
+
+## WebsiteWireFrame
+
+<https://miro.com/app/board/uXjVPUqUlys=/?share_link_id=453595243841>

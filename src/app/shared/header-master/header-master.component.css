@@ -1,0 +1,7 @@
+section[class*="section-heading"] {
+  padding: 5px;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  align-items: center;
+}

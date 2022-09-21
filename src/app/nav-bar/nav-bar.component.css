@@ -1,27 +1,36 @@
-div.navBar{
+/* div.navBar{
   justify-content: center;
   align-items: center;
   display: flex;
-}
+} */
 
 div {
-  display: flex;
-  justify-content: space-between;
+
+  align-items: center;
   width: 100%;
-  position: fixed;
+
   background: white;
+  border: 5px dashed red;
 }
 
 ul {
   display: flex;
+  justify-content: flex-end;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
   list-style-type: none;
+  overflow: hidden;
 }
 
 ul li a {
   text-decoration: none;
+  display: block;
+  text-align: center;
   margin: 0 10px;
   color: black;
-  font-family: cursive;
+  padding: 10px;
+  float: left;
 }
 
 ul li a:hover {
