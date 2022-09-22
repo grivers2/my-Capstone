@@ -16,7 +16,6 @@ import { TeamsComponent } from './teams/teams.component';
 import { MembersComponent } from './teams/members/members.component';
 import { AppRoutingModule } from './app.routing.module';
 import { RouterModule } from '@angular/router';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 
 @NgModule({
@@ -32,7 +31,6 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
     SidebarComponent,
     TeamsComponent,
     MembersComponent,
-    PagenotfoundComponent,
     ErrorpageComponent,
   ],
   imports: [
