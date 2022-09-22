@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MenubarModule } from 'primeng/menubar'
-import { MenuItem } from 'primeng/api';
-
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
