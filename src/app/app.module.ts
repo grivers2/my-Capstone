@@ -17,6 +17,7 @@ import { MembersComponent } from './teams/members/members.component';
 import { AppRoutingModule } from './app.routing.module';
 import { RouterModule } from '@angular/router';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
+import {StyleClassModule} from 'primeng/styleclass';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
     CommonModule,
     MenubarModule,
     AppRoutingModule,
+    StyleClassModule
   ],
   providers: [],
   bootstrap: [AppComponent]

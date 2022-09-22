@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-section[class] {
+/* section[class] {
   float: left;
   width: 33.33%;
   padding: 10px;
@@ -13,4 +13,4 @@ main[class]:after {
   content: "";
   display: table;
   clear: both;
-}
+} */
