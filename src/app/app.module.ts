@@ -7,18 +7,17 @@ import { LandingComponent } from './landing/landing.component';
 import { OrganizationsComponent } from './organizations/organizations.component';
 import { GroupComponent } from './group/group.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
 import { HeaderMasterComponent } from './shared/header-master/header-master.component';
 import { FooterMasterComponent } from './shared/footer-master/footer-master.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TeamsComponent } from './teams/teams.component';
-
-const appRoutes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'Organizations', component: OrganizationsComponent },
-]
+import { MembersComponent } from './teams/members/members.component';
+import { AppRoutingModule } from './app.routing.module';
+import { RouterModule } from '@angular/router';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
 
 @NgModule({
   declarations: [
@@ -32,15 +31,17 @@ const appRoutes: Routes = [
     HeaderMasterComponent,
     SidebarComponent,
     TeamsComponent,
+    MembersComponent,
+    PagenotfoundComponent,
+    ErrorpageComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     CommonModule,
     MenubarModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
   ],
-  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })
