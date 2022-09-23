@@ -3,11 +3,11 @@ import { RouterModule, Routes }  from "@angular/router" ;
 import { ErrorpageComponent } from "./errorpage/errorpage.component";
 import { LandingComponent } from "./landing/landing.component";
 import { OrganizationsComponent } from "./organizations/organizations.component";
-import { MembersComponent } from "./teams/members/members.component";
+import { MembersComponent } from "./members/members.component";
 import { TeamsComponent } from "./teams/teams.component";
 
 
-const appRoutes: Routes = [
+const routes: Routes = [
   { path: 'Home', component: LandingComponent },
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Organizations', component: OrganizationsComponent },
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: '**', component: ErrorpageComponent },
 ]
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 
