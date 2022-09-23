@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/showcase/styles/primeng.css";
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeflex/primeflex.css";
+@import "../node_modules/prismjs/themes/prism-coy.css";
+@import "../node_modules/quill/dist/quill.snow.css";
+@import "assets/showcase/styles/flags.css";
+
+
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+
