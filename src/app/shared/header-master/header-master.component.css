@@ -1,7 +1,8 @@
-section[class*="section-heading"] {
-  padding: 5px;
-  margin: auto;
-  position: fixed;
-  top: 0;
-  align-items: center;
+header {
+  border-bottom: 1px solid #000;
+  margin-bottom: 0;
+}
+
+h1 {
+  text-shadow: 1px 1px red;
 }

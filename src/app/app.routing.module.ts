@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes }  from "@angular/router" ;
 import { ErrorpageComponent } from "./errorpage/errorpage.component";
-import { GroupComponent } from "./group/group.component";
 import { LandingComponent } from "./landing/landing.component";
 import { OrganizationsComponent } from "./organizations/organizations.component";
 import { MembersComponent } from "./teams/members/members.component";
