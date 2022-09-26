@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule  } from '@angular/forms';
@@ -17,6 +18,7 @@ import { HeaderMasterComponent } from './header-master/header-master.component';
 import { FooterMasterComponent } from './footer-master/footer-master.component';
 import { TeamsComponent } from './teams/teams.component';
 import { MembersComponent } from './members/members.component';
+import { MembersService } from './services/members.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { MembersComponent } from './members/members.component';
     ReactiveFormsModule,
     BreadcrumbModule
   ],
-  providers: [],
+  providers: [MembersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

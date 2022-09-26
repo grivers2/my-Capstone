@@ -5,22 +5,16 @@ import { LandingComponent } from "./landing/landing.component";
 import { OrganizationsComponent } from "./organizations/organizations.component";
 import { MembersComponent } from "./members/members.component";
 import { TeamsComponent } from "./teams/teams.component";
+import { LoginComponent } from "./login/login.component";
 
 
 const routes: Routes = [
-  { path: 'Home',
-  component: LandingComponent,
-    data: {
-    breadcrumb:  'Home'}},
+  { path: 'Home', component: LandingComponent },
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
-  { path: 'Leagues', component: OrganizationsComponent,
-    data: {
-    breadcrumb:  'Leagues'}},
-  { path: 'Teams', component: TeamsComponent,
-    data: {
-    breadcrumb:  'Teams'}},
-  { path: 'Members', component: MembersComponent, data: {
-    breadcrumb:  'Members'}},
+  { path: 'Leagues', component: OrganizationsComponent },
+  { path: 'Teams', component: TeamsComponent },
+  { path: 'Members', component: MembersComponent },
+  { path: 'Login', component: LoginComponent },
   { path: '**', component: ErrorpageComponent },
 ]
 @NgModule({

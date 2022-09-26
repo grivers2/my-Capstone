@@ -35,9 +35,6 @@
                       <div class="league-basic league-box">
                           <span class="league-name">New York</span>
                           <div class="league-fee"></div>
-                          <a class="p-button" type="button" role="button" aria-disabled="true">
-                            <span class="p-button-text">Sign Up</span>
-                        </a>
                       </div>
                   </div>
 
@@ -45,10 +42,6 @@
                       <div class="league-standard league-box">
                           <span class="league-name">Atlanta</span>
                           <div class="league-fee"></div>
-
-                          <a class="p-button" type="button" role="button" aria-disabled="true">
-                            <span class="p-button-text">Sign Up</span>
-                        </a>
                       </div>
                   </div>
 
@@ -56,13 +49,12 @@
                       <div class="league-professional league-box">
                           <span class="league-name">Miami</span>
                           <div class="league-fee"></div>
-
-                          <a class="p-button" type="button" role="button" aria-disabled="true">
-                            <span class="p-button-text">Sign Up</span>
-                          </a>
                       </div>
                   </div>
               </div>
+              <a routerLink="Leagues" class="p-button" type="button" role="button" aria-disabled="false" (click)="btnClick();">
+                <span class="p-button-text">Register your team now!</span>
+              </a>
           </div>
       </div>
 
