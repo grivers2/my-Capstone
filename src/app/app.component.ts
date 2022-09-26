@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
     //Add 'implements OnInit' to the class.
      this.titleService.setTitle('Welcome to Flag Football');
      this.primengConfig.ripple = true;       //enables core ripple functionality
-
   }
 
 }
