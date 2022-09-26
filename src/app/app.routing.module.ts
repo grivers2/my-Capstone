@@ -8,11 +8,19 @@ import { TeamsComponent } from "./teams/teams.component";
 
 
 const routes: Routes = [
-  { path: 'Home', component: LandingComponent },
+  { path: 'Home',
+  component: LandingComponent,
+    data: {
+    breadcrumb:  'Home'}},
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
-  { path: 'Organizations', component: OrganizationsComponent },
-  { path: 'Teams', component: TeamsComponent },
-  { path: 'Members', component: MembersComponent },
+  { path: 'Leagues', component: OrganizationsComponent,
+    data: {
+    breadcrumb:  'Leagues'}},
+  { path: 'Teams', component: TeamsComponent,
+    data: {
+    breadcrumb:  'Teams'}},
+  { path: 'Members', component: MembersComponent, data: {
+    breadcrumb:  'Members'}},
   { path: '**', component: ErrorpageComponent },
 ]
 @NgModule({

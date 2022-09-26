@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { MenubarModule } from 'primeng/menubar'
 import { MenuItem } from 'primeng/api';
+import { TooltipModule } from 'primeng/tooltip';
+import { Subscription } from 'rxjs';
+import { BreadcrumbService } from '../services/breadcrumb.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,49 +14,78 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavBarComponent {
 
-  items!: MenuItem[];
+ subscription: Subscription;
 
-  ngOnInit() {
-    {
-      this.items = [
-        {
-          label:'ACC',
-          items: [
-            {label: 'ACC Organizations'},
-            {label: 'ACC Groups'}
-          ]
-        },
-        {
-          label: 'SEC',
-          items: [
-            {label: 'SEC Organizations'},
-            {label: 'SEC Groups'}
-          ]
-        },
-        {
-          label: 'Big Ten',
-          items: [
-            {label: 'Big Ten Organizations'},
-            {label: 'Big Ten Groups'}
-          ]
-        },
-        {
-          label: 'Big Twelve',
-          items: [
-            {label: 'Big Twelve Organizations'},
-            {label: 'Big Twelve Groups'}
-          ]
-        },
-        {
-          label: 'Pac Ten',
-          items: [
-            {label: 'Pac Ten'},
-            {label: 'Pac Ten'}
-          ]
-        }
+ items!: MenuItem[];
 
-      ]
-    }
-  }
+ constructor(public breadcrumbService: BreadcrumbService) {
+  this.subscription = breadcrumbService.itemsHandler.subscribe(
+      (response) => {
+          this.items = response;
+      }
+  );
 
+  // this.home = { icon: 'pi pi-home', routerLink: '/' };
 }
+
+ ngOnInit(): void {
+  this.items = [
+      {label: 'Home', routerLink: ['/home']},
+      {label: 'Leagues', routerLink: ['/leagues']},
+      {label: 'Teams', routerLink: ['/teams']},
+      {label: 'Members', routerLink: ['/members']},
+      {label: 'Login', routerLink: ['/login']}
+  ];
+}
+
+
+@Input() model?: MenuItem[];
+
+@Input() style?: any;
+
+@Input() styleClass?: string;
+
+@Input() home?: MenuItem;
+
+@Input() homeAriaLabel?: string;
+
+@Output() onItemClick: EventEmitter<any> = new EventEmitter();
+
+itemClick(event: { preventDefault: () => void; }, item: MenuItem) {
+    if (item.disabled) {
+        event.preventDefault();
+        return;
+    }
+
+    if (!item.url && !item.routerLink) {
+        event.preventDefault();
+    }
+
+    if (item.command) {
+        item.command({
+            originalEvent: event,
+            item: item
+        });
+    }
+
+    this.onItemClick.emit({
+        originalEvent: event,
+        item: item
+    });
+}
+
+onHomeClick(event: { preventDefault: () => void; }) {
+    if (this.home) {
+        this.itemClick(event, this.home);
+    }
+}
+}
+
+// @NgModule({
+// imports: [CommonModule,RouterModule,TooltipModule],
+// exports: [NavBarComponent,RouterModule,TooltipModule],
+// declarations: [NavBarComponent]
+// })
+export class BreadcrumbModule { }
+
+export {MenuItem}
