@@ -23,7 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/styles/styles.scss"
+              "src/assets/styles/styles.scss",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css"
             ],
             "scripts": []
           },
@@ -67,7 +69,8 @@
               "browserTarget": "my-Capstone:build:production"
             },
             "development": {
-              "browserTarget": "my-Capstone:build:development"
+              "browserTarget": "my-Capstone:build:development",
+              "port": 8000
             }
           },
           "defaultConfiguration": "development"
@@ -85,6 +88,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
