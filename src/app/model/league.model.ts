@@ -1,11 +1,11 @@
 export class League {
   OrganizationName?: string;
-  OrganizationId?: string;
+  OrganizationId?: number;
   Description?: string;
 
-  constructor(organizationName: string, organizationId: string, description: string) {
+  constructor(organizationName: string, organizationId: number, description: string) {
     this.OrganizationName = organizationName;
     this.OrganizationId = organizationId;
     this.Description = description;
-}
+  }
 }

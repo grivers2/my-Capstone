@@ -1,12 +1,10 @@
-import { HttpClient } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule  } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app.routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
-import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,7 +16,6 @@ import { HeaderMasterComponent } from './header-master/header-master.component';
 import { FooterMasterComponent } from './footer-master/footer-master.component';
 import { TeamsComponent } from './teams/teams.component';
 import { MembersComponent } from './members/members.component';
-import { MembersService } from './services/members.service';
 
 @NgModule({
   declarations: [
@@ -39,9 +36,9 @@ import { MembersService } from './services/members.service';
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BreadcrumbModule
+    HttpClientModule,
   ],
-  providers: [MembersService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

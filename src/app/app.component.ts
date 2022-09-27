@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { PrimeNGConfig } from 'primeng/api';
+
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,12 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private titleService: Title, private primengConfig: PrimeNGConfig,) { }
+  constructor(private titleService: Title) { }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
      this.titleService.setTitle('Welcome to Flag Football');
-     this.primengConfig.ripple = true;       //enables core ripple functionality
   }
 
 }

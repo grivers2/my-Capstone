@@ -1,11 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-// import { MenuItem } from 'primeng/api';
-// import { TooltipModule } from 'primeng/tooltip';
-// import { Subscription } from 'rxjs';
-// import { BreadcrumbService } from '../services/breadcrumb.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,8 +10,11 @@ import { RouterModule } from '@angular/router';
 export class NavBarComponent implements OnInit {
   isActive?: boolean = true;
 
-  constructor() { }
+  constructor(public router: Router) { }
+
   ngOnInit() { }
+
+  // TODO: add search parameters here
 }
 
 

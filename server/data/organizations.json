@@ -1,22 +1,17 @@
 [
 	{
 		"OrganizationName": "Atlanta",
-		"OrganizationId": "Org1",
+		"OrganizationId": 1,
 		"Description": "This is organization 1"
 	},
 	{
 		"OrganizationName": "New York",
-		"OrganizationId": "Org2",
+		"OrganizationId": 2,
 		"Description": "This is organization 2"
     },
     {
 		"OrganizationName": "Miami",
-		"OrganizationId": "Org3",
+		"OrganizationId": 3,
 		"Description": "This is organization 3"
-	},
-	{
-		"OrganizationName": "Philadelphia",
-		"OrganizationId": "Org4",
-		"Description": "This is organization 4"
 	}
 ]

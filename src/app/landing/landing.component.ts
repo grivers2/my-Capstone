@@ -1,18 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { LeaguesOrgService } from './../services/leagues-org.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { League } from '../model/league.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router) { }
+  league?: any;
+  leagueSubscription!: Subscription;
+  errorMessage?: string;
 
-  ngOnInit(): void { }
+
+  constructor(private router: Router, private leagueService:LeaguesOrgService, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.leagueSubscription = this.leagueService.getLeaguesOrg().subscribe({
+      next: (res: any) => {
+        this.league = res;
+        console.log(this.league);
+      },
+      error: (err) => {
+        this.errorMessage = err;
+        console.log(this.errorMessage = err.message);
+      },
+      complete: () => {
+        console.log(`called getLeaguesOrg()`);
+      },
+    });
+
+  }
 
   btnClick =  () => {
     this.router.navigateByUrl('/Leagues')
+  }
+
+  ngOnDestroy(): void {
+    this.leagueSubscription.unsubscribe()
   }
 }

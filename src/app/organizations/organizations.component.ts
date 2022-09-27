@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationsComponent implements OnInit {
 
-  orgType: string = 'NCAA';
-
   constructor() { }
 
   ngOnInit(): void {
