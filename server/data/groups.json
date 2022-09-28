@@ -65,7 +65,23 @@
         "MemberEmail": "ian_the_great@gmail.com",
         "MemberName": "Ian Auston",
         "MemberPhone": "555-000-0025"
+      },
+      {
+        "MemberId": 7,
+        "MemberEmail": "daustin042990@gmail.com",
+        "MemberName": "Astin",
+        "MemberPhone": "12345678"
       }
     ]
+  },
+  {
+    "GroupId": 6,
+    "GroupName": "Bengals",
+    "OrganizationName": "Norvet",
+    "SponsorName": "Todd Smith",
+    "SponsorPhone": "12292969836",
+    "SponsorEmail": "Grivers24@gmail.com",
+    "MaxGroupSize": 1,
+    "Members": []
   }
 ]

@@ -1,58 +1,62 @@
 <div class="card">
   <h5>Register</h5>
-  <div class="formgrid grid">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="formgrid grid">
     <div class="field col-12 md:col-6">
-      <label for="firstname6">Firstname</label>
+      <label for="GroupName">GroupName</label>
       <input
-        id="firstname6"
+        id="GroupName"
         type="text"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        formControlName="GroupName"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
     <div class="field col-12 md:col-6">
-      <label for="lastname6">Lastname</label>
+      <label class="form-label" for="OrganizationName">OrganizationName</label>
       <input
-        id="lastname6"
+        id="OrganizationName"
         type="text"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        formControlName="OrganizationName"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
     <div class="field col-12 md:col-6">
-      <label for="address">Address</label>
-      <textarea
-        id="address"
+      <label class="form-label" for="SponsorName">SponsorName</label>
+      <input
+        id="SponsorName"
         type="text"
-        rows="4"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      ></textarea>
+        formControlName="SponsorName"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
     </div>
     <div class="field col-12 md:col-6">
-      <label for="city">City</label>
+      <label class="form-label" for="SponsorEmail">SponsorEmail</label>
       <input
-        id="city"
-        type="text"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        id="SponsorEmail"
+        type="email"
+        formControlName="SponsorEmail"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
     <div class="field col-12 md:col-3">
-      <label for="state">State</label>
-      <select
-        id="state"
-        class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
-        style="appearance: auto"
-      >
-        <option>New York</option>
-        <option>Atlanta</option>
-        <option>Miami</option>
-      </select>
-    </div>
-    <div class="field col-12 md:col-3">
-      <label for="zip">Zip</label>
+      <label class="form-label" for="MaxGroupSize">MaxGroupSize</label>
       <input
-        id="zip"
-        type="text"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        id="MaxGroupSize"
+        type="number"
+        formControlName="MaxGroupSize"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
-  </div>
+    <div class="field col-12 md:col-3">
+      <label class="form-label" for="SponsorPhone">SponsorPhone</label>
+      <input
+        id="SponsorPhone"
+        formControlName="SponsorPhone"
+        type="text"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-12 md:col-3">
+      <button type="submit" pButton pRipple label="Primary" class="p-button-raised">submit</button>
+    </div>
+  </form>
 </div>

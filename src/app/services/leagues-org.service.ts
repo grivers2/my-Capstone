@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { League } from '../model/league.model';
 import { Groups } from '../model/group-teams.model';
@@ -15,6 +15,10 @@ export class LeaguesOrgService {
   urlMembers = 'http://127.0.0.1:8082/api/groups/byorganization/'; //urlMembers
   errorMessage?: string;
 
+  options = {
+    headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+  };
+
   constructor(private http: HttpClient) {
   }
 
@@ -24,13 +28,13 @@ export class LeaguesOrgService {
     return results;
   }
 
-  addMember(groupId: number, newMember: Members): Observable<Members> {
+  addMember(groupId: number, newMember: any): Observable<Members> {
     const urlSaveMember = `${this.urlGroup}/${groupId}/members`;
-    return this.http.post<Members>(urlSaveMember, newMember);
+    return this.http.post<Members>(urlSaveMember, newMember.toString(), this.options);
   }
 
-  createNewGroup(newGroup: Groups): Observable<Groups> {
-    return this.http.post<Groups>(this.urlGroup, newGroup);
+  createNewGroup(newGroup: any): Observable<Groups> {
+    return this.http.post<Groups>(this.urlGroup, newGroup.toString(), this.options);
   }
 
   createNewMember(newMember: Members): Observable<Members> {

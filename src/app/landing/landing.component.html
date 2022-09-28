@@ -13,23 +13,11 @@
               <p>Cities that we provide Flag Football programs.</p>
 
               <div class="grid">
-                  <div class="col-12 md:col-4">
+                  <div *ngFor="let item of league" class="col-12 md:col-4">
                       <div class="league-basic league-box">
-                          <span class="league-name">New York</span>
+                          <span class="league-name">{{item.OrganizationName}}</span>
+                          <p>{{item.Description}}</p>
                           <div class="league-fee"></div>
-                      </div>
-                  </div>
-
-                  <div class="col-12 md:col-4">
-                      <div class="league-standard league-box">
-                          <span class="league-name">{{league.OrganizationName}}</span>
-                      </div>
-                  </div>
-
-                  <div class="col-12 md:col-4">
-                      <div class="league-professional league-box">
-                          <span class="league-name">Miami</span>
-
                       </div>
                   </div>
               </div>

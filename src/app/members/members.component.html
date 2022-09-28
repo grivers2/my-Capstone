@@ -1,0 +1,48 @@
+<div class="card">
+  <h5>Register Member in Group</h5>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="formgrid grid">
+    <div class="field col-12 md:col-6">
+      <label for="GroupId">GroupId</label>
+      <select
+        id="GroupId"
+        type="text"
+        (change)="groupSelect($event)"
+        formControlName="GroupId"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      >
+      <option value="">select group</option>
+      <option *ngFor="let item of groups" value="{{item.GroupId}}">{{item.GroupName}}</option>
+    </select>
+    </div>
+    <div class="field col-12 md:col-6">
+      <label class="form-label" for="MemberEmail">MemberEmail</label>
+      <input
+        id="MemberEmail"
+        type="email"
+        formControlName="MemberEmail"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-12 md:col-6">
+      <label class="form-label" for="MemberName">MemberName</label>
+      <input
+        id="MemberName"
+        type="text"
+        formControlName="MemberName"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-12 md:col-3">
+      <label class="form-label" for="MemberPhone">MemberPhone</label>
+      <input
+        id="MemberPhone"
+        formControlName="MemberPhone"
+        type="text"
+        class="form-control text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-12 md:col-3">
+      <button type="submit" pButton pRipple label="Primary" class="p-button-raised">submit</button>
+    </div>
+  </form>
+</div>
