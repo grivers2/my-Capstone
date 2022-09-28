@@ -1,7 +1,6 @@
 import { LeaguesOrgService } from './../services/leagues-org.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { League } from '../model/league.model';
 import { Subscription } from 'rxjs';
 
 @Component({
