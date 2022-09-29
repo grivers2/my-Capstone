@@ -25,6 +25,7 @@ import {DialogModule} from 'primeng/dialog';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {ToolbarModule} from 'primeng/toolbar';
+import { MemeberDetailsComponent } from './memeber-details/memeber-details.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {ToolbarModule} from 'primeng/toolbar';
     MembersComponent,
     ErrorpageComponent,
     DetailsComponent,
+    MemeberDetailsComponent,
   ],
   imports: [
     BrowserModule,
