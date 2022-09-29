@@ -45,6 +45,12 @@ export class LeaguesOrgService {
     return this.http.get<Groups[]>(this.urlGroup)
   }
 
+  getGroups():Observable<any> {
+    return this.http.get<any>(this.urlGroup)
+    //.toPromise().then(res => res.data as Groups[])
+    // .then(data => data);
+  }
+
   getGroupsByOrg(organizationId: number): Observable<Groups[]> {
     return this.http.get<Groups[]>(`${this.urlMembers}/${organizationId}`);
   }
@@ -60,8 +66,8 @@ export class LeaguesOrgService {
   deleteMembersByGroupIdAndMemberId(groupId: number, memberId: number): Observable<Members[]> {
     return this.http.delete<Members[]>(`${this.urlMembers}/${groupId}/${memberId}`);
   }
-  updateGroup(groupId: number, newGroup: Groups): Observable<Groups> {
-    return this.http.put<Groups>(`${this.urlGroup}/${groupId}`, newGroup);
+  updateGroup(groupId: number, newGroup: any): Observable<Groups> {
+    return this.http.put<Groups>(`${this.urlGroup}`, newGroup.toString(), this.options);
   }
 
   updateMember(groupId: number, newMember: Members): Observable<Members> {

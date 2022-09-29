@@ -1,7 +1,6 @@
-import { Groups } from './../model/group-teams.model';
-import { LeaguesOrgService } from './../services/leagues-org.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LeaguesOrgService } from './../services/leagues-org.service';
 
 @Component({
   selector: 'app-teams',
@@ -12,12 +11,12 @@ export class TeamsComponent implements OnInit {
   constructor(private fb: FormBuilder, private leageService: LeaguesOrgService) { }
 
   myForm = this.fb.group({
-    GroupName: [''],
-    OrganizationName: [''],
-    SponsorName: [''],
-    SponsorEmail: [''],
+    GroupName: ['', Validators.required],
+    OrganizationName: ['', Validators.required],
+    SponsorName: ['',[Validators.required, Validators.minLength(3)]],
+    SponsorEmail: ['',[Validators.required, Validators.email]],
     MaxGroupSize: ['', [Validators.required]],
-    SponsorPhone: ['', [Validators.required, Validators.maxLength(30)]],
+    SponsorPhone: ['', [Validators.required, Validators.maxLength(10)]],
   });
   ngOnInit() { }
 

@@ -35,7 +35,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   btnClick =  () => {
-    this.router.navigateByUrl('/Leagues')
+    this.router.navigateByUrl('/Teams')
   }
 
   ngOnDestroy(): void {

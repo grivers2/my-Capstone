@@ -5,30 +5,40 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
-import { OrganizationsComponent } from './organizations/organizations.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { HeaderMasterComponent } from './header-master/header-master.component';
 import { FooterMasterComponent } from './footer-master/footer-master.component';
 import { TeamsComponent } from './teams/teams.component';
 import { MembersComponent } from './members/members.component';
+import { DetailsComponent } from './details/details.component';
+
+import {ButtonModule} from 'primeng/button';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {DialogModule} from 'primeng/dialog';
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {ToolbarModule} from 'primeng/toolbar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LandingComponent,
-    OrganizationsComponent,
     NavBarComponent,
     FooterMasterComponent,
     HeaderMasterComponent,
     TeamsComponent,
     MembersComponent,
     ErrorpageComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +47,14 @@ import { MembersComponent } from './members/members.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    TableModule,
+    ButtonModule,
+    CheckboxModule,
+    ToastModule,
+    ToolbarModule,
+    DialogModule,
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
