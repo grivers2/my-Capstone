@@ -90,13 +90,6 @@ export class DetailsComponent implements OnInit {
     this.group = { ...group };
   }
 
-  // confirmDeleteSelected(){
-  //     this.deleteGroupsDialog = false;
-  //     this.groups = this.groups.filter(val => !this.selectedGroups.includes(val));
-  //     this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Groups Deleted', life: 3000});
-  //     // this.selectedGroups = null; // TODO
-  // }
-
   confirmDelete(group: Groups) {
     this.group = group;
     console.log('group info ===', group);

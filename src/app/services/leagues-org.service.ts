@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { League } from '../model/league.model';
 import { Groups } from '../model/group-teams.model';
 import { Members } from '../model/members.model';
@@ -22,6 +22,13 @@ export class LeaguesOrgService {
   constructor(private http: HttpClient) {
   }
 
+  getCustomersSmall() {
+    return this.http.get<any>(this.urlGroup)
+        .toPromise()
+        .then(res => res.data as Groups[])
+        .then(data => data);
+}
+
   getLeaguesOrg(): Observable<League> {
     const results: Observable<League> = this.http.get<League>(this.urlLeagues);
     console.log(results);
@@ -33,12 +40,18 @@ export class LeaguesOrgService {
     return this.http.post<Members>(urlSaveMember, newMember.toString(), this.options);
   }
 
+  getMembers() {
+    return this.http.get<Members>(this.urlMembers).pipe(map((res: any)=>{
+      return res;
+    }))
+  }
+
   createNewGroup(newGroup: any): Observable<Groups> {
     return this.http.post<Groups>(this.urlGroup, newGroup.toString(), this.options);
   }
 
-  createNewMember(newMember: Members): Observable<Members> {
-    return this.http.post<Members>(this.urlMembers, newMember);
+  createNewMember(newMember:any): Observable<Members> {
+    return this.http.post<Members>(this.urlMembers, newMember.toString(),this.options);
   }
 
   getAllGroups(): Observable<Groups[]> {
@@ -47,20 +60,14 @@ export class LeaguesOrgService {
 
   getGroups():Observable<any> {
     return this.http.get<any>(this.urlGroup)
-    //.toPromise().then(res => res.data as Groups[])
-    // .then(data => data);
-  }
-
-  getGroupsByOrg(organizationId: number): Observable<Groups[]> {
-    return this.http.get<Groups[]>(`${this.urlMembers}/${organizationId}`);
-  }
-
-  getGroupById(GroupId: number): Observable<Groups> {
-    return this.http.get<Groups>(`${this.urlGroup}/${GroupId}`);
   }
 
   deleteGroupById(GroupId: number): Observable<Groups> {
     return this.http.delete<Groups>(`${this.urlGroup}/${GroupId}`);
+  }
+
+  deleteMemberById(MemberId: number): Observable<Members> {
+    return this.http.delete<Members>(`${this.urlMembers}/${MemberId}`);
   }
 
   deleteMembersByGroupIdAndMemberId(groupId: number, memberId: number): Observable<Members[]> {
@@ -70,16 +77,12 @@ export class LeaguesOrgService {
     return this.http.put<Groups>(`${this.urlGroup}`, newGroup.toString(), this.options);
   }
 
-  updateMember(groupId: number, newMember: Members): Observable<Members> {
-    return this.http.put<Members>(`${this.urlMembers}/${groupId}`, newMember);
+  updateMember(groupId: number, newMember: any): Observable<Members> {
+    return this.http.put<Members>(`${this.urlMembers}`, newMember.toString(), this.options);
   }
 
   getMemberById(groupId: number, MemberId: number): Observable<Members> {
     return this.http.get<Members>(`${this.urlMembers}/${groupId}/${MemberId}`);
-  }
-
-  getMembers(organizationId: number): Observable<Members[]> {
-    return this.http.get<Members[]>(`${this.urlMembers}/${organizationId}`);
   }
 
   getMembersByGroupId(organizationId: number, groupId: number): Observable<Members[]> {

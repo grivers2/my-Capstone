@@ -22,10 +22,6 @@ export class MembersComponent implements OnInit {
     GroupId: ['']
   });
   ngOnInit() {
-    this.leageService.getAllGroups().subscribe((res: Groups[]) => {
-      console.log('get all groups ===', res)
-      this.groups = res;
-    })
   }
 
   groupSelect(e: any) {
