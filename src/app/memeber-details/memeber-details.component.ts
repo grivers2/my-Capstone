@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { mergeAll, mergeMap } from 'rxjs';
 import { Groups } from '../model/group-teams.model';
 import { Members } from '../model/members.model';
 import { LeaguesOrgService } from '../services/leagues-org.service';
@@ -21,7 +20,7 @@ export class MemeberDetailsComponent implements OnInit {
 
   deleteMembersDialog!: boolean;
 
-  members!: Members[];
+  members: Members[] = [];
 
   groups!: Groups[];
 
@@ -33,14 +32,14 @@ export class MemeberDetailsComponent implements OnInit {
 
   submitted!: boolean;
 
-  cols!: Members[];
+  cols!: any;
 
   addEditFlag!: boolean;
 
   rowsPerPageOptions =  [5, 10, 20];
 
   loading!: boolean;
-  Members: { field: string; header: string; }[] = [];
+
 
   constructor(
     private memberService: LeaguesOrgService,
@@ -48,10 +47,14 @@ export class MemeberDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.memberService.getCustomersSmall().then(groups => {
-      this.groups = groups;
-      this.loading = false;
+    this.memberService.getGroups().subscribe((data) => {
+      console.log('get all groups ===', data);
+      this.groups = data;
+      this.groups.forEach(x => {this.members.push(...x.Members)});
+      console.log('all members=', this.members);
+
     });
+
     this.cols = [
       { field: 'MemberName', header: 'Member Name' },
       { field: 'MemberEmail', header: 'Member Email' },
@@ -77,8 +80,8 @@ export class MemeberDetailsComponent implements OnInit {
 
   handleChange(e: any) {
     const element = e.target.id;
-    this.group.member[`${element}`] = e.target.value;
-    console.log('change ===', this.group.member);
+    this.member[`${element}`] = e.target.value;
+    console.log('change ===', this.member);
   }
 
   deleteSelectedMembers() {
@@ -86,20 +89,20 @@ export class MemeberDetailsComponent implements OnInit {
   }
 
   editMember(member: Members) {
-    this.group.member = { ...member};
+    this.member = { ...member};
     this.membersDialog = true;
   }
 
   deleteMember(member: Members) {
     this.deleteMemberDialog = false;
-    this.group.member = {...member};
+    this.member = {...member};
   }
 
   confirmDelete(member: Members) {
-    this.group.member = member;
+    this.member = member;
     console.log('member info ===', member);
     this.deleteMembersDialog = false;
-    this.group.member = this.group.member.filter(
+    this.member = this.member.filter(
       (val: { group: { MemberId: number; }; }) => val.group.MemberId !== member.MemberId
     );
     this.memberService.deleteMemberById(this.member.MemberId).subscribe(data => {
@@ -109,7 +112,7 @@ export class MemeberDetailsComponent implements OnInit {
         detail: 'Product Deleted',
         life: 3000,
       });
-      this.group.member = { ...this.group.member };
+      this.member = { ...this.member };
     })
 
   }
@@ -122,16 +125,18 @@ export class MemeberDetailsComponent implements OnInit {
   saveMember() {
     this.submitted = true;
 
-    if (this.group.member.MemberName.trim()) {
+    if (this.member.MemberName.trim()) {
       const body = new URLSearchParams();
-      body.set('MemberName', this.group.member.MemberName || '');
-      body.set('MemberEmail', this.group.member.MemberEmail || '');
-      body.set('MemberNumber', this.group.member.MemberNumber || '');
+      body.set('MemberName', this.member.MemberName || '');
+      body.set('MemberEmail', this.member.MemberEmail || '');
+      body.set('MemberNumber', this.member.MemberNumber || '');
 
-      if (this.group.member.MemberId) {
-        body.set('MemberId', this.group.member.MemberId || '');
-        this.group.members[this.findIndexById(this.group.member.MemberName)] = this.member;
-        this.memberService.updateMember(this.group.member.MemberId, body).subscribe(data => {
+      if (this.member.MemberId && this.group.GroupId) {
+        body.set('GroupId', this.group.GroupId || '');
+        body.set('MemberId', this.member.MemberId || '');
+        this.groups[this.findIndexById(this.group.GroupName)] = this.group;
+        this.members[this.findIndexById(this.member.MemberName)] = this.member;
+        this.memberService.updateMemberByGroup(this.group.GroupId, this.member.MemberId, body).subscribe(data => {
           console.log('data updated ===', data);
           this.messageService.add({
             severity: 'success',
@@ -142,9 +147,9 @@ export class MemeberDetailsComponent implements OnInit {
           this.member = { ...data };
         })
       } else {
-        this.group.member.MemberName = this.createId();
+        this.member.MemberName = this.createId();
         this.memberService.createNewMember(body).subscribe(data => {
-          this.group.members.push(data);
+          this.members.push(data);
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
@@ -154,16 +159,16 @@ export class MemeberDetailsComponent implements OnInit {
         });
       }
 
-      this.group.members = [...this.group.members];
+      this.members = [...this.members];
       this.membersDialog = false;
-      this.group.member = { ...this.group.member };
+      this.member = { ...this.member };
     }
   }
 
   findIndexById(id: string): number {
     let index = -1;
-    for (let i = 0; i < this.group.members.length; i++) {
-      if (this.group.members[i].MemberName === id) {
+    for (let i = 0; i < this.members.length; i++) {
+      if (this.members[i].MemberName === id) {
         index = i;
         break;
       }

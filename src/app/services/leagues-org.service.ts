@@ -101,5 +101,11 @@ export class LeaguesOrgService {
     return this.http.get<Members[]>(`${this.urlMembers}/${organizationId}/${groupId}`);
   }
 
+  updateMemberByGroup(groupId: number, memberId: number, newMember: any): Observable<Groups[]> {
+    return this.http.put<Groups[]>(`${this.urlMembers}/${groupId}/${memberId}`, newMember.toString(), this.options)
+  }
 
+  getMembersByGroupName(groupName: string): Observable<Groups[]> {
+    return this.http.get<Groups[]>(`${this.urlMembers}/${groupName}`);
+  }
 }
